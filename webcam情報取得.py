@@ -1,17 +1,68 @@
-print('Hello World')
+#https://www.klv.co.jp/corner/python-opencv-camera-setting.html
 import cv2
 
+# Webカメラをオープン
 cap = cv2.VideoCapture(0)
 
-camera_parameter = ['CAP_PROP_FRAME_WIDTH',
- 'CAP_PROP_FRAME_HEIGHT',
- 'CAP_PROP_FOURCC',
- 'CAP_PROP_BRIGHTNESS',
- 'CAP_PROP_CONTRAST',
- 'CAP_PROP_SATURATION',
- 'CAP_PROP_HUE',
- 'CAP_PROP_GAIN',
- 'CAP_PROP_EXPOSURE',]
+# カメラの情報を取得
+fps = cap.get(cv2.CAP_PROP_FPS)
+frame_width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+frame_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+fourcc = cap.get(cv2.CAP_PROP_FOURCC)
+format = cap.get(cv2.CAP_PROP_FORMAT)
+mode = cap.get(cv2.CAP_PROP_MODE)
+convert_rgb = cap.get(cv2.CAP_PROP_CONVERT_RGB)
+brightness = cap.get(cv2.CAP_PROP_BRIGHTNESS)
+contrast = cap.get(cv2.CAP_PROP_CONTRAST)
+saturation = cap.get(cv2.CAP_PROP_SATURATION)
+hue = cap.get(cv2.CAP_PROP_HUE)
+gain = cap.get(cv2.CAP_PROP_GAIN)
+exposure = cap.get(cv2.CAP_PROP_EXPOSURE)
+wb_temperature = cap.get(cv2.CAP_PROP_WB_TEMPERATURE)
+gamma = cap.get(cv2.CAP_PROP_GAMMA)
+focus = cap.get(cv2.CAP_PROP_FOCUS)
+pan = cap.get(cv2.CAP_PROP_PAN)
+tilt = cap.get(cv2.CAP_PROP_TILT)
+roll = cap.get(cv2.CAP_PROP_ROLL)
+iris = cap.get(cv2.CAP_PROP_IRIS)
+auto_exposure = cap.get(cv2.CAP_PROP_AUTO_EXPOSURE)
+autofocus = cap.get(cv2.CAP_PROP_AUTOFOCUS)
+auto_wb = cap.get(cv2.CAP_PROP_AUTO_WB)
+temperature = cap.get(cv2.CAP_PROP_TEMPERATURE)
+trigger = cap.get(cv2.CAP_PROP_TRIGGER)
+trigger_delay = cap.get(cv2.CAP_PROP_TRIGGER_DELAY)
+settings = cap.get(cv2.CAP_PROP_SETTINGS)
 
-for x in range(9):
-     print(camera_parameter[x], '=', cap.get(x))
+# 取得したカメラの情報を表示
+print("解像度（幅）: ", frame_width)
+print("解像度（高さ）: ", frame_height)
+print("FPS: ", fps)
+print("圧縮フォーマット: ", fourcc)
+print("フォーマット: ", format)
+print("モード: ", mode)
+print("RGB変換: ", convert_rgb)
+print("明るさ: ", brightness)
+print("コントラスト: ", contrast)
+print("彩度: ", saturation)
+print("色相: ", hue)
+print("ゲイン: ", gain)
+print("露出: ", exposure)
+print("ホワイトバランス: ", wb_temperature)
+print("ガンマ: ", gamma)
+print("フォーカス: ", focus)
+print("パン（水平移動）: ", pan)
+print("チルト: ", tilt)
+print("ロール: ", roll)
+print("絞り: ", iris)
+print("露出制御: ", auto_exposure)
+print("フォーカス制御: ", autofocus)
+print("ホワイトバランス制御: ", auto_wb)
+print("温度: ", temperature)
+print("トリガーモード: ", trigger)
+print("トリガーディレイ: ", trigger_delay)
+print("設定値変更ウィンドウのポップアップ: ", settings)
+
+# カメラをリリース
+cap.release()
+cv2.destroyAllWindows()
+# 他の情報も同様にget()メソッドで取得できますが、カメラの種類やドライバによっては対応していないプロパティもあります。その場合は-1やFalseなどが返されます。
