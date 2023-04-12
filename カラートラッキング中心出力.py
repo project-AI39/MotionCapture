@@ -31,6 +31,7 @@ while True:
     # フレームを表示
     cv2.imshow("Ball Tracking", frame)
     cv2.imshow("Mask", mask)
+    cv2.imshow("ball", ball)
 
     # 'q'キーが押されたらループを抜ける
     if cv2.waitKey(1) & 0xFF == ord('q'):

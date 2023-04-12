@@ -7,8 +7,10 @@ def select_color_range(event, x, y, flags, param):
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         pixel_value = hsv[y, x]
         lower_color = np.array([pixel_value[0] - 10, pixel_value[1] - 50, pixel_value[2] - 50])
+        bace_color = np.array([pixel_value[0], pixel_value[1], pixel_value[2]])
         upper_color = np.array([pixel_value[0] + 10, pixel_value[1] + 50, pixel_value[2] + 50])
         print("Lower Color:", lower_color)
+        print("Bace Color:", bace_color)
         print("Upper Color:", upper_color)
 
 # ウェブカメラのキャプチャを開始
