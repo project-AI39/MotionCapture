@@ -66,9 +66,9 @@ while True:
     # denoised = frame_denoised(frame)q
     # メディアンブラーを適用して画像の平滑化を行う #少し重い（0.03s）
     # blurred = mask_blurred(mask)
-    # 膨張処理を行う
+    # 膨張処理を行う #軽い（0.0003s）
     dilated = mask_dilated(mask)
-    # 収縮処理を行う
+    # 収縮処理を行う #軽い（0.0003s）
     eroded = mask_eroded(mask)
 
     # マスクを使って元のフレームに対してビット毎のAND演算を行い、ボールのみを抽出
