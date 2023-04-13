@@ -63,7 +63,7 @@ while True:
     mask = cv2.inRange(hsv, lower_blue, upper_blue)
 
     # ノイズ除去のために非局所平均法を適用  #かなり重い（0.9s）
-    # denoised = frame_denoised(frame)q
+    # denoised = frame_denoised(frame)
     # メディアンブラーを適用して画像の平滑化を行う #少し重い（0.03s）
     # blurred = mask_blurred(mask)
     # 膨張処理を行う #軽い（0.0003s）
