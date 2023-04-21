@@ -1,4 +1,5 @@
 import cv2
+import glob
 import numpy as np
 
 # チェスボードの行数と列数
@@ -16,35 +17,34 @@ objp[:, :2] = np.mgrid[0:cols, 0:rows].T.reshape(-1, 2) * square_size
 objpoints = []  # 3D座標
 imgpoints = []  # 2D座標
 
-# キャリブレーション用の画像の読み込み
+# 画像の読み込み
 images = []
-for i in range(0, 6):
-    filename = './img0/cam0/' + str(i) + '.png'
+for filename in sorted(glob.glob('./img0/cam0/*.png')):
     img = cv2.imread(filename)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     images.append(gray)
 # 画像の読み込みを終了
 print('Image loading is finished.')
+print (images)
 
 # チェスボードのコーナーを検出
 for i, gray in enumerate(images):
     ret, corners = cv2.findChessboardCorners(gray, (cols, rows), None)
-
     if ret == True:
         # コーナーの位置を修正
         corners2 = cv2.cornerSubPix(gray, corners, (11, 11), (-1, -1), criteria=(cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001))
-
         # 3D座標と2D座標をリストに追加
         objpoints.append(objp)
         imgpoints.append(corners2)
-
         # チェスボードのコーナーを描画
         cv2.drawChessboardCorners(img, (cols, rows), corners2, ret)
         cv2.imshow('img', img)
         cv2.waitKey(500)
-    
     # 処理の進捗を表示
     print(f'Processing... {i + 1}/{len(images)}')
+    # corners2の定義
+    corners2 = None
+
 
 cv2.destroyAllWindows()
 
