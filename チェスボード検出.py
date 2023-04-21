@@ -2,7 +2,7 @@ import cv2
 import os
 
 # チェスボードのサイズ
-pattern_size = (8, 6)
+pattern_size = (7, 5)
 
 # フォルダ内のすべての画像ファイルを取得
 folder_path = './img0/cam0/'
@@ -19,6 +19,10 @@ for image_file in image_files:
     if found:
         # コーナーを描画
         cv2.drawChessboardCorners(image, pattern_size, corners, found)
+        
+        # 原点に点を描画
+        origin = corners[0][0]
+        cv2.circle(image, (int(origin[0]), int(origin[1])), 10, (0, 0, 255), -1)
         
         # 結果を表示
         cv2.imshow('Chessboard Corners', image)
