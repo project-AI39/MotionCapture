@@ -9,11 +9,11 @@ fy=1264.1658427870718
 cx=963.4532191086563
 cy=536.9201057274719
 rvecs_x=-0.004131861300871871
-rvecs_y=-0.004228318477201886
-rvecs_z=-0.007557409768509171
+rvecs_y=-0.34146591163488893
+rvecs_z=0.00028835112493211186
 tvecs_x=0.07995035544381054
-tvecs_y=0.9248787253848142
-tvecs_z=-1.5185064149524372
+tvecs_y=0.10694853761605323
+tvecs_z=3.385298532837615
 
 # 三次元空間を作成
 fig = plt.figure()
@@ -32,6 +32,9 @@ ax.quiver(0, 0, 0, 0, 0, 1, length=1, normalize=True, color='b')# z軸 (奥)
 # カメラの座標に赤点を描写
 camera_position = np.array([[tvecs_x], [tvecs_y], [tvecs_z]])
 ax.scatter(camera_position[0], camera_position[1], camera_position[2], color='r')
+
+# 画像の中心座標に青点を描写
+ax.scatter(cx, cy, 0, color='b')
 
 # カメラの向いている方向をベクトル線で表現し描写
 rotation_matrix, _ = cv2.Rodrigues(np.array([[rvecs_x], [rvecs_y], [rvecs_z]], dtype=np.float32))
