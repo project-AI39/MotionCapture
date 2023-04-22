@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 import glob
-import pickle
+
 
 # チェスボードの行数、列数、サイズを定義
 rows = 5
@@ -44,3 +44,48 @@ print(mtx)
 print("外部パラメータ:")
 print(rvecs)
 print(tvecs)
+
+# 内部パラメータの値を分割して表示
+fx = mtx[0][0]
+fy = mtx[1][1]
+cx = mtx[0][2]
+cy = mtx[1][2]
+print("fx=", fx)
+print("fy=", fy)
+print("cx=", cx)
+print("cy=", cy)
+
+# 外部パラメータの値を分割して表示
+rvecs_x = rvecs[0][0]
+rvecs_y = rvecs[1][0]
+rvecs_z = rvecs[2][0]
+tvecs_x = tvecs[0][0]
+tvecs_y = tvecs[1][0]
+tvecs_z = tvecs[2][0]
+rvecs_x = rvecs_x[0]
+rvecs_y = rvecs_y[0]
+rvecs_z = rvecs_z[0]
+tvecs_x = tvecs_x[0]
+tvecs_y = tvecs_y[0]
+tvecs_z = tvecs_z[0]
+print("rvecs_x=", rvecs_x)
+print("rvecs_y=", rvecs_y)
+print("rvecs_z=", rvecs_z)
+print("tvecs_x=", tvecs_x)
+print("tvecs_y=", tvecs_y)
+print("tvecs_z=", tvecs_z)
+
+# パラメータの値を保存
+with open("calibration_params.txt", "w") as f:
+    f.write("fx=" + str(fx) + "\n")
+    f.write("fy=" + str(fy) + "\n")
+    f.write("cx=" + str(cx) + "\n")
+    f.write("cy=" + str(cy) + "\n")
+    f.write("rvecs_x=" + str(rvecs_x) + "\n")
+    f.write("rvecs_y=" + str(rvecs_y) + "\n")
+    f.write("rvecs_z=" + str(rvecs_z) + "\n")
+    f.write("tvecs_x=" + str(tvecs_x) + "\n")
+    f.write("tvecs_y=" + str(tvecs_y) + "\n")
+    f.write("tvecs_z=" + str(tvecs_z) + "\n")
+
+print("パラメータの値を保存しました。")
