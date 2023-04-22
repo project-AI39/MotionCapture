@@ -12,13 +12,14 @@ square_size = 0.1
 objp = np.zeros((rows * cols, 3), np.float32)
 objp[:, :2] = np.mgrid[0:cols, 0:rows].T.reshape(-1, 2) * square_size
 
-print("初めに必要なものをインポートしました。")
+print("必要なものをインポートしました。")
 
 # 画像が入っているフォルダのパスを定義
-path = './img0/cam0/*.png'
+path_list = ['./img0/cam0/.png', './img0/cam1/.png', './img0/cam2/*.png']
 
-print("画像が入っているフォルダのパスを定義しました。")
-
+for i, path in enumerate(path_list):
+    print(f"カメラ{i}の画像を処理します。")
+    
 # フォルダから画像を読み込み、画像のリストを作成
 images = []
 image_points = []
@@ -31,16 +32,17 @@ for filename in glob.glob(path):
     else:
         print(f"Failed to detect chessboard corners in {filename}")
 
-print("フォルダから画像を読み込み、画像のリストを作成しました。")
+print(f"カメラ{i}の画像から、画像のリストを作成しました。")
 
 # キャリブレーションを行い、内部パラメータと外部パラメータを求める
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera([objp]*len(images), image_points, cv2.cvtColor(images[0], cv2.COLOR_BGR2GRAY).shape[::-1], None, None)
 
-print("キャリブレーションを行い、内部パラメータと外部パラメータを求めました。")
+print(f"カメラ{i}のキャリブレーションを行い、内部パラメータと外部パラメータを求めました。")
 
 # 内部パラメータと外部パラメータをprintする
-print("内部パラメータ:")
+print(f"カメラ{i}の内部パラメータ:")
 print(mtx)
-print("外部パラメータ:")
+print(f"カメラ{i}の外部パラメータ:")
 print(rvecs)
 print(tvecs)
+print("------------------------")

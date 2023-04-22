@@ -3,11 +3,11 @@ import glob
 import numpy as np
 
 # チェスボードの行数と列数
-rows = 6
-cols = 8
+rows = 5
+cols = 7
 
 # 1マスのサイズ (10cm)
-square_size = 10
+square_size = 0.1
 
 # チェスボードのコーナーの3D座標
 objp = np.zeros((rows * cols, 3), np.float32)
