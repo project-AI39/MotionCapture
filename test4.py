@@ -57,11 +57,11 @@ print("cy=", cy)
 
 # 外部パラメータの値を分割して表示
 rvecs_x = rvecs[0][0]
-rvecs_y = rvecs[1][0]
-rvecs_z = rvecs[2][0]
+rvecs_y = rvecs[0][1]
+rvecs_z = rvecs[0][2]
 tvecs_x = tvecs[0][0]
-tvecs_y = tvecs[1][0]
-tvecs_z = tvecs[2][0]
+tvecs_y = tvecs[0][1]
+tvecs_z = tvecs[0][2]
 rvecs_x = rvecs_x[0]
 rvecs_y = rvecs_y[0]
 rvecs_z = rvecs_z[0]
