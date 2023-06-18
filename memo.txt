@@ -46,3 +46,6 @@ rvecs_z：回転ベクトルのz方向成分
 tvecs_x：並進ベクトルのx方向成分（ワールド座標系でのカメラ位置からの距離を示す）
 tvecs_y：並進ベクトルのy方向成分（ワールド座標系でのカメラ位置からの距離を示す）
 tvecs_z：並進ベクトルのz方向成分（ワールド座標系でのカメラ位置からの距離を示す）
+
+opencv-python
+https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html?highlight=triangulatepoints#cv2.triangulatePoints
