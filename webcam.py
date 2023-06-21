@@ -14,14 +14,12 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)  # 高さを720に設定
 cap.set(cv2.CAP_PROP_FPS, 30)  # フレームレートを30fpsに設定
 
 # カメラの設定が反映されたか確認するために、現在の設定値を取得して表示
+width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+fps = cap.get(cv2.CAP_PROP_FPS)
 fourcc = cap.get(cv2.CAP_PROP_FOURCC)
-fourcc_bytes = int(fourcc).to_bytes(4, byteorder='little')
-fourcc_str = fourcc_bytes.decode('ascii')
-print('FourCC:', fourcc_str)
 
-print('Width:', cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-print('Height:', cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-print('FPS:', cap.get(cv2.CAP_PROP_FPS))
+print(f"width: {width}, height: {height}, fps: {fps}, fourcc: {fourcc}")
 
 while True:
     # フレームをキャプチャ
