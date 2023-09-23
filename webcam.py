@@ -17,7 +17,11 @@ cap.set(cv2.CAP_PROP_FPS, 30)  # フレームレートを30fpsに設定
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 fps = cap.get(cv2.CAP_PROP_FPS)
-fourcc = cap.get(cv2.CAP_PROP_FOURCC)
+fourcc = int(cap.get(cv2.CAP_PROP_FOURCC))
+fourcc = fourcc.to_bytes(4, 'little')
+print("fourcc:", "".join([chr((fourcc >> 8 * i) & 0xFF) for i in range(4)]))
+
+
 
 print(f"width: {width}, height: {height}, fps: {fps}, fourcc: {fourcc}")
 
